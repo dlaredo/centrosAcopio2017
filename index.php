@@ -38,7 +38,7 @@
 <?php
 
 	$dbConnection = null;
-	$fieldNamesCentroAcopio = array('Nombre del Centro', 'Calle', 'Numero', 'Colonia', 'Codigo Postal', 'Delegacion/Municipio', 'Estado', 'Mapa');
+	$fieldNamesCentroAcopio = array('Nombre del Centro', 'Calle', 'Numero', 'Colonia', 'Codigo Postal', 'Del/Mpio', 'Zona', 'Estado', 'Telefono', 'Contacto', 'Horarios', 'Tipo Centro', 'Mapa');
 
 	require 'api/db_config.php';
 
@@ -73,7 +73,7 @@
 				   	echo "<td><a href=\"crud_table.php?val=$resultRow[0]&name=$resultRow[1]&location=$ubicacion\" target=_blank>$p</a></td>\n";
 				   }
 				   else if ($col == $nFields-1){
-				   	echo "<td><a href=$p target=_blank>Ver mapa</a></td>\n";
+				   	if ($p != ''){echo "<td><a href=$p target=_blank>Ver mapa</a></td>\n";}
 				   }
 				   else{
 				   	echo "<td>$p</td> \n";
