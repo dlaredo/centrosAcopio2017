@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <link rel="stylesheet" href="tabla.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,26 +13,37 @@
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
+     <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="datatables/dataTables.colVis.min.js"></script>
+    <script src="datatables/dataTables.tableTools.min.js"></script>
+    <script src="datatables/dataTables.bootstrap.min.js"></script>
+    <script src="datatables/datatables.responsive.min.js"></script>
+
+    <link href="datatables/smartadmin-production-plugins.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
+
   <style>
+ body{font-family: 'Roboto Condensed', sans-serif !important;}
 
 	/* unvisited link */
 	a:link {
-	    color: red;
+	    color: white; text-decoration: underline;
 	}
 
 	/* visited link */
 	a:visited {
-	    color: gray;
+	    color: white; text-decoration: underline;
 	}
 
 	/* mouse over link */
 	a:hover {
-	    color: hotpink;
+	    color: hotpink; text-decoration: underline;
 	}
 
 	/* selected link */
 	a:active {
-	    color: blue;
+	    color: white; text-decoration: underline;
 	}
 
 .rwd-table-2 {
@@ -109,7 +122,7 @@
 
 <body>
 
-<h1> Lista de centros de acopio, sismo 2017. Click en el nombre del centro de acopio para visualizar la necesidad de articulos. </h1>
+<h1> Lista de centros de acopio, sismo 2017. Clic en el nombre del centro de acopio para visualizar la necesidad de articulos. </h1>
 
 <?php
 
@@ -128,15 +141,16 @@
         $nEntries = $mysql_resultGetAll->num_rows;
         $nFields = $mysql_resultGetAll->field_count;
 
-        echo "<table class='rwd-table hide'>";
+        echo "<table class='table rwd-table'>";
         for ($row=0; $row <= $nEntries; $row++) {
 
             if ($row==0){
-              echo "<tr class='tab'> \n";
+              echo "<thead><tr class='tab'> \n";
                 for ($col=1; $col <= $nFields-1; $col++) { 
                     $p = $fieldNamesCentroAcopio[$col-1];
                        echo "<th>$p</th> \n";
                 }
+                echo "</thead><tbody>\n";
             }
             else{
                 echo "<tr> \n";
@@ -158,14 +172,14 @@
             }
               echo "</tr>";
             }
-        echo "</table>";
+        echo "</tbody></table>";
     }
 
     $dbConnection = connectDB();
     createTable("centro_acopio");
 
 ?>
-<div class="fluid-container container-cancel">
+<!--<div class="fluid-container container-cancel">
     <table class='rwd-table-2' align="center" cellpadding="1" cellspacing="1" style="vertical-align: text-top">
         <tr>
             <th>Nombre del Centro</th> 
@@ -186,11 +200,39 @@
     </table>
     <div class="panel-footer" align="center"><ul id="pagination-demo" class="pagination-sm"></ul></div>
 </div>
-
+-->
 <script>
 var elementosVisibles = 10;
 $(document).ready(function(){
-  setPagination();
+  /*setPagination();*/
+  var responsiveHelper_dt_basic = undefined;
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+  $('.rwd-table').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+                        "t" +
+                        "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+                "autoWidth": true,
+                "oLanguage": {
+                    "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
+                },
+                "preDrawCallback": function () {
+                    // Initialize the responsive datatables helper once.
+                    if (!responsiveHelper_dt_basic) {
+                        responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('.rwd-table'), breakpointDefinition);
+                    }
+                },
+                "rowCallback": function (nRow) {
+                    responsiveHelper_dt_basic.createExpandIcon(nRow);
+                },
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_dt_basic.respond();
+                }
+            });
+
 });
  function setPagination(){
   var totalElements = $(".rwd-table tbody tr:not(.tab)").length;
@@ -213,6 +255,7 @@ $(document).ready(function(){
   });
 }
 </script>
-
+<br/>
+<br/>
 </body>
 </html>
