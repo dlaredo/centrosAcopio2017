@@ -3,14 +3,19 @@ use id2987913_sismo2017acopios;
 
 CREATE TABLE centro_acopio (
   id						int(10) NOT NULL AUTO_INCREMENT,
-  Nombre 					varchar(255) NOT NULL,
-  Calle						varchar(255) NOT NULL,
-  Numero					int(10) NOT NULL,
-  Colonia					varchar(255) NOT NULL,
-  CodigoPostal				int(10) NOT NULL,
-  Del_Municipio				varchar(255) NOT NULL,
-  Estado					varchar(255) NOT NULL,
-  URLMapa					varchar(255) NOT NULL,
+  Nombre 					varchar(255),
+  Calle						varchar(255),
+  Numero					varchar(255),
+  Colonia					varchar(255),
+  CodigoPostal				int(10),
+  Del_Mpio					varchar(255),
+  Zona						varchar(255),
+  Estado					varchar(255),
+  Telefono					varchar(255),
+  Contacto					varchar(255),
+  Horarios					varchar(255),
+  TipoCentro				varchar(255),
+  URLMapa					varchar(255),
   PRIMARY KEY (id)) ENGINE=InnoDB;
   
 CREATE TABLE articulos (
