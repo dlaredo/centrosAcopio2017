@@ -64,7 +64,7 @@
 		        	$nameCentroAcopio = $_GET["name"];
 					$locationCentroAcopio = $_GET["location"];
 
-		        	echo "<h2> Lista de articulos necesarios para el centro de acopio $nameCentroAcopio, ubicado en $locationCentroAcopio. <br/><br/> La lista se muestra en orden descendente por prioridad de articulos. </h2>"
+		        	echo "<h2> Lista de articulos necesarios para el centro de acopio $nameCentroAcopio, ubicado en $locationCentroAcopio. <br/><br/> La lista se muestra en orden descendente por prioridad de articulos.</h2><h3><b>Si deseas agregar algo a la lista o modificar algun item los datos de acceso son, usuario: <u>admin</u>, contraseña: <u>admin</u>. Por favor haz un uso consciente del servicio.</b></h3>"
 		        	?>
 		        </div>
 		        <div class="pull-right">
