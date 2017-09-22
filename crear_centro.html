@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Validation Form</title>
+
+	<link rel="stylesheet" href="assets/demo.css">
+	<link rel="stylesheet" href="assets/form-validation.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+</head>
+
+    <div class="main-content">
+
+        <!-- You only need this form and the form-validation.css -->
+
+        <form class="form-validation" method="post" action="api/createCenter.php" id="crearCentro">
+
+            <div class="form-title-row">
+                <h1>Agregar Centro de Acopio</h1>
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Nombre del Centro</span>
+                    <input type="text" name="nombre">
+                </label>
+
+                <!--
+                    Add these three elements to every form row. They will be shown by the
+                    .form-valid-data and .form-invalid-data classes (see the JS for an example).
+                -->
+
+                <span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+
+                <span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
+                <span class="form-invalid-data-info"></span>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Calle</span>
+                    <input type="text" name="calle">
+                </label>
+
+                <!--
+                    Add these three elements to every form row. They will be shown by the
+                    .form-valid-data and .form-invalid-data classes (see the JS for an example).
+                -->
+
+                <span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+
+                <span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
+                <span class="form-invalid-data-info"></span>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Numero</span>
+                    <input type="text" name="numero">
+                </label>
+
+                <!--
+                    Add these three elements to every form row. They will be shown by the
+                    .form-valid-data and .form-invalid-data classes (see the JS for an example).
+                -->
+
+                <span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+
+                <span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
+                <span class="form-invalid-data-info"></span>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Colonia</span>
+                    <input type="text" name="colonia">
+                </label>
+
+                <!--
+                    Add these three elements to every form row. They will be shown by the
+                    .form-valid-data and .form-invalid-data classes (see the JS for an example).
+                -->
+
+                <span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+
+                <span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
+                <span class="form-invalid-data-info"></span>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Codigo Postal</span>
+                    <input type="text" name="cp">
+                </label>
+
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Del/Mpio</span>
+                    <input type="text" name="del_mpio">
+                </label>
+
+                <!--
+                    Add these three elements to every form row. They will be shown by the
+                    .form-valid-data and .form-invalid-data classes (see the JS for an example).
+                -->
+
+                <span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+
+                <span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
+                <span class="form-invalid-data-info"></span>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Zona</span>
+                    <input type="text" name="zona">
+                </label>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Estado</span>
+                    <input type="text" name="estado">
+                </label>
+
+                <!--
+                    Add these three elements to every form row. They will be shown by the
+                    .form-valid-data and .form-invalid-data classes (see the JS for an example).
+                -->
+
+                <span class="form-valid-data-sign"><i class="fa fa-check"></i></span>
+
+                <span class="form-invalid-data-sign"><i class="fa fa-close"></i></span>
+                <span class="form-invalid-data-info"></span>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Telefono</span>
+                    <input type="text" name="tel">
+                </label>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Contacto</span>
+                    <input type="text" name="contacto">
+                </label>
+
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Horarios</span>
+                    <input type="text" name="horario">
+                </label>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Tipo Centro</span>
+                    <input type="text" name="tipo">
+                </label>
+
+            </div>
+
+            <div class="form-row form-input-name-row">
+
+                <label>
+                    <span>Mapa</span>
+                    <input type="text" name="mapa">
+                </label>
+
+            </div>
+
+            <div class="form-row">
+
+                <label class="form-checkbox">
+                    <span>Verificado</span>
+                    <input type="checkbox" name="verificado">
+                </label>
+
+            </div>
+
+            <div class="form-row">
+
+                <button type ="button" id = "crearCentro-submit">Crear</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+
+        // Here is how to show an error message next to a form field
+
+        var errorField = $('.form-input-name-row');
+
+        // Adding the form-invalid-data class will show
+        // the error message and the red x for that field
+
+        errorField.addClass('form-invalid-data');
+        errorField.find('.form-invalid-data-info').text('Por favor llene este campo');
+
+
+        // Here is how to mark a field with a green check mark
+
+        var successField = $('.form-input-email-row');
+
+        successField.addClass('form-valid-data');
+    });
+
+    /* Login */
+    $("#crearCentro-submit").click(function(e){
+    //alert('creandocentro')
+
+    var form_action = $("#crearCentro").attr("action");
+
+    var nombre = $("#crearCentro").find("input[name='nombre']").val();
+    var calle = $("#crearCentro").find("input[name='calle']").val();
+    var numero = $("#crearCentro").find("input[name='numero']").val();
+    var colonia = $("#crearCentro").find("input[name='colonia']").val();
+    var cp = $("#crearCentro").find("input[name='cp']").val();
+    var del_mpio = $("#crearCentro").find("input[name='del_mpio']").val();
+    var zona = $("#crearCentro").find("input[name='zona']").val();
+    var estado = $("#crearCentro").find("input[name='estado']").val();
+    var telefono = $("#crearCentro").find("input[name='tel']").val();
+    var contacto = $("#crearCentro").find("input[name='contacto']").val();
+    var horario = $("#crearCentro").find("input[name='horario']").val();
+    var tipo = $("#crearCentro").find("input[name='tipo']").val();
+    var mapa = $("#crearCentro").find("input[name='mapa']").val();
+    //var verificado = $("#crearCentro").find("checkbox[name='verificado']").val();
+
+    var url = ''
+
+    console.log(nombre + " " + calle + " " + numero + " " + colonia + " " + cp + " " + del_mpio + " " + zona + " " + 
+        estado + " " + telefono + " " + contacto + " " + horario + " " + tipo + " " + mapa);
+
+    if(nombre != '' && calle != '' && numero != '' && colonia != '' && del_mpio != '' && estado != ''){
+        $.ajax({
+            dataType: 'json',
+            //contentType: "application/json",//note the contentType defintion
+            type:'POST',
+            url: url + form_action,
+            data:{name:nombre, street:calle, number:numero, neigh:colonia, cp:cp, county:del_mpio, area:zona, state:estado, phone:telefono, contact:contacto, hours:horario, kind:tipo, map:mapa}
+        }).done(function(data){
+            $("#crearCentro").find("input[name='nombre']").val('');
+            $("#crearCentro").find("input[name='calle']").val('');
+            $("#crearCentro").find("input[name='numero']").val('');
+            $("#crearCentro").find("input[name='colonia']").val('');
+            $("#crearCentro").find("input[name='cp']").val('');
+            $("#crearCentro").find("input[name='del_mpio']").val('');
+            $("#crearCentro").find("input[name='zona']").val('');
+            $("#crearCentro").find("input[name='estado']").val('');
+            $("#crearCentro").find("input[name='tel']").val('');
+            $("#crearCentro").find("input[name='contacto']").val('');
+            $("#crearCentro").find("input[name='horario']").val('');
+            $("#crearCentro").find("input[name='tipo']").val('');
+            $("#crearCentro").find("input[name='mapa']").val('');
+
+            console.log(data)
+
+            if(data == 1)
+            {
+                window.location.replace("index.php");
+                
+            }
+            else
+            {
+                alert("Registro no agregado")
+                console.log('no agregado')
+            }
+        }).fail(function(){ console.log('fallo en agregar') });
+    }else{
+        alert('Por favor llene todos los campos')
+    }
+
+});
+
+
+</script>
+
+</body>
+
+</html>

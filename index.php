@@ -124,6 +124,12 @@
 
 <h1> Lista de centros de acopio, sismo 2017. Clic en el nombre del centro de acopio para visualizar la necesidad de articulos. </h1>
 
+<div class="pull-right">
+	<button type="button" class="btn btn-success" onclick="window.location.replace('crear_centro.html');">
+		Agregar Centro
+	</button>
+</div>
+
 <?php
 
     $dbConnection = null;
