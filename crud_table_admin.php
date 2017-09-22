@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Articulos Necesarios</title>
+	<title>Art&iacute;culos Necesarios</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
@@ -9,6 +9,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
+<script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
 	<script type="text/javascript">
     	 var url = "";
@@ -19,7 +25,9 @@
     <link rel="stylesheet" href="tabla.css">
 
   <style>
-
+body{font-family: 'Roboto Condensed', sans-serif !important;}
+.red-color{    color: #e43;}
+.green-color{    color: #2c7;}
 	/* unvisited link */
 	a:link {
 	    color: red;
@@ -39,7 +47,15 @@
 	a:active {
 	    color: blue;
 	}
-
+.rwd-table {
+    background: #34495e !important;
+}
+.rwd-table th, .rwd-table td:before {
+    color: #ec0 !important;
+}
+table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+    background-color: white !important;
+}
   </style>
 
 </head>
@@ -56,7 +72,7 @@
 		        	$nameCentroAcopio = $_GET["name"];
 					$locationCentroAcopio = $_GET["location"];
 
-		        	echo "<h2> Lista de articulos necesarios para el centro de acopio $nameCentroAcopio, ubicado en $locationCentroAcopio. <br/><br/> La lista se muestra en orden descendente por prioridad de articulos. </h2>"
+		        	echo "<h2> Lista de art&iacute;culos necesarios para el centro de acopio $nameCentroAcopio, ubicado en $locationCentroAcopio. <br/><br/> <span class='green-color'>La lista se muestra en orden descendente por prioridad de articulos</span> </h2>"
 		        	?>
 		        </div>
 		        <div class="pull-right">
@@ -73,8 +89,8 @@
 				<th>Nombre</th>
 				<th>Cantidad</th>
 				<th>Prioridad</th>
-				<th>Categoria</th>
-				<th width="200px">Accion</th>
+				<th>Categor&iacute;a</th>
+				<th width="200px">Acci&oacute;n</th>
 			    </tr>
 			</thead>
 			<tbody>
@@ -97,7 +113,7 @@
 
 		      			<div class="form-group">
 							<label class="control-label" for="name">Nombre:</label>
-							<input type="text" name="nombre" class="form-control" data-error="Introduzca nombre." required />
+							<input type="text" name="nombre" class="form-control"  maxlength="250" data-error="Introduzca nombre." required />
 							<div class="help-block with-errors"></div>
 						</div>
 
@@ -120,8 +136,8 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label" for="category">Categoria:</label>
-							<select name="categoria" class="form-control" data-error="Defina categoria." required>
+							<label class="control-label" for="category">Categor&iacute;a:</label>
+							<select name="categoria" class="form-control" data-error="Defina Categor&iacute;a." required>
 							  <option value="Viveres">Viveres</option>
 							  <option value="Articulos de Rescate">Articulos de rescate</option>
 							  <option value="Higiene">Higiene</option>
@@ -158,7 +174,7 @@
 
 		      			<div class="form-group">
 							<label class="control-label" for="name">Nombre:</label>
-							<input type="text" name="nombre" class="form-control" data-error="Introduzca nombre." required />
+							<input type="text" name="nombre" class="form-control"  maxlength="250" data-error="Introduzca nombre." required />
 							<div class="help-block with-errors"></div>
 						</div>
 
@@ -181,8 +197,8 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label" for="category">Categoria:</label>
-							<select name="categoria" class="form-control" data-error="Defina categoria." required>
+							<label class="control-label" for="category">Categor&iacute;a:</label>
+							<select name="categoria" class="form-control" data-error="Defina Categor&iacute;a." required>
 							  <option value="Viveres">Viveres</option>
 							  <option value="Articulos de Rescate">Articulos de rescate</option>
 							  <option value="Higiene">Higiene</option>

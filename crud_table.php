@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Articulos Necesarios</title>
+	<title>Art&iacute;culos Necesarios</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
@@ -9,7 +9,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
 	<script type="text/javascript">
     	 var url = "";
         </script>
@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="tabla.css">
 
   <style>
+   body{font-family: 'Roboto Condensed', sans-serif !important;}
+.red-color{    color: #e43;}
+.green-color{    color: #2c7;}
 
 	/* unvisited link */
 	a:link {
@@ -39,7 +42,15 @@
 	a:active {
 	    color: blue;
 	}
-
+.rwd-table {
+    background: #34495e !important;
+}
+.rwd-table th, .rwd-table td:before {
+    color: #ec0 !important;
+}
+table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+    background-color: white !important;
+}
   </style>
 
 </head>
@@ -64,7 +75,7 @@
 		        	$nameCentroAcopio = $_GET["name"];
 					$locationCentroAcopio = $_GET["location"];
 
-		        	echo "<h2> Lista de articulos necesarios para el centro de acopio $nameCentroAcopio, ubicado en $locationCentroAcopio. <br/><br/> La lista se muestra en orden descendente por prioridad de articulos.</h2><h3><b>Si deseas agregar algo a la lista o modificar algun item los datos de acceso son, usuario: <u>admin</u>, contraseña: <u>admin</u>. Por favor haz un uso consciente del servicio.</b></h3>"
+		        	echo "<h2> Lista de art&iacute;culos necesarios para el centro de acopio $nameCentroAcopio, ubicado en $locationCentroAcopio. <br/><br/> La lista se muestra en orden descendente por prioridad de art&iacute;culos.</h2><h3><b>Si deseas agregar algo a la lista o modificar alg&uacute;n &iacute;tem los datos de acceso son, <span class='red-color'>usuario: <u>admin</u></span>, <span class='red-color'>contraseña: <u>admin</u></span>. <br/><br/> <p class='green-color text-center'>Por favor haz un uso consciente del servicio</p></b></h3>"
 		        	?>
 		        </div>
 		        <div class="pull-right">
@@ -80,7 +91,7 @@
 			    <tr>
 				<th>Nombre</th>
 				<th>Prioridad</th>
-				<th>Categoria</th>
+				<th>Categor&iacute;a</th>
 			    </tr>
 			</thead>
 			<tbody>

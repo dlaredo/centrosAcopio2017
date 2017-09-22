@@ -7,12 +7,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Validation Form</title>
-
+	<title>Crear Centro</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/demo.css">
 	<link rel="stylesheet" href="assets/form-validation.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css">
 </head>
 
     <div class="main-content">
@@ -25,10 +26,10 @@
                 <h1>Agregar Centro de Acopio</h1>
             </div>
 
-            <div class="form-row form-input-name-row">
+            <div class="form-row form-input-name-row form-input-asterisk">
 
                 <label>
-                    <span>Nombre del Centro</span>
+                    <span><i class='fa fa-asterisk'></i> Nombre del Centro</span>
                     <input type="text" name="nombre">
                 </label>
 
@@ -44,10 +45,10 @@
 
             </div>
 
-            <div class="form-row form-input-name-row">
+            <div class="form-row form-input-name-row form-input-asterisk">
 
                 <label>
-                    <span>Calle</span>
+                    <span><i class='fa fa-asterisk'></i> Calle</span>
                     <input type="text" name="calle">
                 </label>
 
@@ -63,10 +64,10 @@
 
             </div>
 
-            <div class="form-row form-input-name-row">
+            <div class="form-row form-input-name-row form-input-asterisk">
 
                 <label>
-                    <span>Numero</span>
+                    <span><i class='fa fa-asterisk'></i> N&uacute;mero</span>
                     <input type="text" name="numero">
                 </label>
 
@@ -82,10 +83,10 @@
 
             </div>
 
-            <div class="form-row form-input-name-row">
+            <div class="form-row form-input-name-row form-input-asterisk">
 
                 <label>
-                    <span>Colonia</span>
+                    <span><i class='fa fa-asterisk'></i> Colonia</span>
                     <input type="text" name="colonia">
                 </label>
 
@@ -104,17 +105,17 @@
             <div class="form-row form-input-name-row">
 
                 <label>
-                    <span>Codigo Postal</span>
+                    <span>C&oacute;digo Postal</span>
                     <input type="text" name="cp">
                 </label>
 
 
             </div>
 
-            <div class="form-row form-input-name-row">
+            <div class="form-row form-input-name-row form-input-asterisk">
 
                 <label>
-                    <span>Del/Mpio</span>
+                    <span><i class='fa fa-asterisk'></i> Del/Mpio</span>
                     <input type="text" name="del_mpio">
                 </label>
 
@@ -139,10 +140,10 @@
 
             </div>
 
-            <div class="form-row form-input-name-row">
+            <div class="form-row form-input-name-row form-input-asterisk">
 
                 <label>
-                    <span>Estado</span>
+                    <span><i class='fa fa-asterisk'></i> Estado</span>
                     <input type="text" name="estado">
                 </label>
 
@@ -161,7 +162,7 @@
             <div class="form-row form-input-name-row">
 
                 <label>
-                    <span>Telefono</span>
+                    <span>Tel&eacute;fono</span>
                     <input type="text" name="tel">
                 </label>
 
@@ -225,6 +226,7 @@
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 
 <script>
 
@@ -232,20 +234,32 @@
 
         // Here is how to show an error message next to a form field
 
-        var errorField = $('.form-input-name-row');
+        var errorField = $('.form-input-asterisk');
 
         // Adding the form-invalid-data class will show
         // the error message and the red x for that field
 
-        errorField.addClass('form-invalid-data');
+/*        errorField.addClass('form-invalid-data');
         errorField.find('.form-invalid-data-info').text('Por favor llene este campo');
-
+*/
 
         // Here is how to mark a field with a green check mark
 
-        var successField = $('.form-input-email-row');
+        errorField.find("input").on("blur",function(){
+            var $parentRow =  $(this).parentsUntil(".form-input-asterisk").parent();
+            if($(this).val() !== ''){
+                $parentRow.addClass('form-valid-data');        
+                $parentRow.removeClass('form-invalid-data');
+            }
+            else{
+                $parentRow.removeClass('form-valid-data');        
+                $parentRow.addClass('form-invalid-data');
+                $parentRow.find('.form-invalid-data-info').text('Por favor llene este campo');
 
-        successField.addClass('form-valid-data');
+            }
+
+        });
+        
     });
 
     /* Login */
@@ -275,7 +289,20 @@
         estado + " " + telefono + " " + contacto + " " + horario + " " + tipo + " " + mapa);
 
     if(nombre != '' && calle != '' && numero != '' && colonia != '' && del_mpio != '' && estado != ''){
-        $.ajax({
+
+swal({
+  title: '¿Sus datos son correctos?',
+  text: "Si desea verificar los datos de clic en cancelar, de otro modo de clic en continuar",
+  type: 'question',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Continuar',
+  cancelButtonText: 'Cancelar',
+  showLoaderOnConfirm: true,
+  preConfirm: function () {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
             dataType: 'json',
             //contentType: "application/json",//note the contentType defintion
             type:'POST',
@@ -298,19 +325,73 @@
 
             console.log(data)
 
-            if(data == 1)
-            {
-                window.location.replace("index.php");
-                
-            }
+            if(data == 1){resolve()}
             else
             {
-                alert("Registro no agregado")
+                reject('Registro no agregado.');
                 console.log('no agregado')
             }
-        }).fail(function(){ console.log('fallo en agregar') });
+        }).fail(function(data){ reject('Registro no agregado.');console.log('fallo en agregar',data) });
+    });
+  },
+  allowOutsideClick: false
+}).then(function () {
+      swal({
+      title: 'Creado exitosamente',
+      text: "Serás redireccionado a la página principal",
+      type: 'success',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'De acuerdo',
+      cancelButtonText: 'Añadir más',
+    }).then(function () {
+        window.location.replace("index.php");
+    });
+ $('.form-valid-data').removeClass("form-valid-data");        
+ $('.form-invalid-data').removeClass("form-invalid-data");
+});
+
+       
     }else{
-        alert('Por favor llene todos los campos')
+        swal({
+      title: 'Forma incompleta',
+      html: "Los campos con <i class='fa fa-asterisk'></i> son obligatorios",
+      type: 'error',
+      showCancelButton: false,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Entendido',
+
+    }).then(function () {
+        var errorField = $('.form-input-asterisk');
+
+        // Adding the form-invalid-data class will show
+        // the error message and the red x for that field
+
+/*        errorField.addClass('form-invalid-data');
+        errorField.find('.form-invalid-data-info').text('Por favor llene este campo');
+*/
+
+        // Here is how to mark a field with a green check mark
+
+        errorField.find("input").each(function(i,a){
+
+            var $parentRow =  $(a).parentsUntil(".form-input-asterisk").parent();
+            if($(a).val() !== ''){
+                $parentRow.addClass('form-valid-data');        
+                $parentRow.removeClass('form-invalid-data');
+            }
+            else{
+                $parentRow.removeClass('form-valid-data');        
+                $parentRow.addClass('form-invalid-data');
+                $parentRow.find('.form-invalid-data-info').text('Por favor llene este campo');
+
+            }
+
+        });
+
+     $(".form-invalid-data").first().find("input").focus();
+    });
     }
 
 });

@@ -129,18 +129,21 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
 
 <body>
 
-<h1> Lista de centros de acopio, sismo 2017. Clic en el nombre del centro de acopio para visualizar la necesidad de articulos. </h1>
-
-<div class="pull-right">
-	<button type="button" class="btn btn-success" onclick="window.location.replace('crear_centro.html');">
-		Agregar Centro
-	</button>
+<div class="container">
+  <div class="well">
+    <h1>Lista de centros de acopio, sismo 2017.</h1> 
+    <h3>Clic en el nombre del centro de acopio para visualizar la necesidad de art&iacute;culos.</h3> 
+    <p class="text-right"><button type="button" class="btn btn-success" onclick="window.location.replace('crear_centro.html');">
+    Agregar Centro
+  </button></p>
+  </div>
 </div>
 
+<div class="container-fluid">
 <?php
 
     $dbConnection = null;
-    $fieldNamesCentroAcopio = array('Nombre del Centro', 'Calle', 'Numero', 'Colonia', 'Codigo Postal', 'Del/Mpio', 'Zona', 'Estado', 'Telefono', 'Contacto', 'Horarios', 'Tipo Centro', 'Mapa');
+    $fieldNamesCentroAcopio = array('Nombre del Centro', 'Calle', 'N&uacute;mero', 'Colonia', 'C&oacute;digo Postal', 'Del/Mpio', 'Zona', 'Estado', 'Tel&eacute;fono', 'Contacto', 'Horarios', 'Tipo Centro', 'Mapa');
 
     require 'api/db_config.php';
 
@@ -192,28 +195,8 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
     createTable("centro_acopio");
 
 ?>
-<!--<div class="fluid-container container-cancel">
-    <table class='rwd-table-2' align="center" cellpadding="1" cellspacing="1" style="vertical-align: text-top">
-        <tr>
-            <th>Nombre del Centro</th> 
-            <th>Calle</th> 
-            <th>Numero</th> 
-            <th>Colonia</th> 
-            <th>Codigo Postal</th> 
-            <th>Delegacion/Municipio</th>
-            <th>Zona</th> 
-            <th>Estado</th>
-            <th>Telefono</th> 
-            <th>Contacto</th> 
-            <th>Horarios</th>
-            <th>Tipo Centro</th>   
-            <th>Mapa</th> 
-        </tr>
-        <tbody id="container-page"></tbody>
-    </table>
-    <div class="panel-footer" align="center"><ul id="pagination-demo" class="pagination-sm"></ul></div>
 </div>
--->
+
 <script>
 var elementosVisibles = 10;
 $(document).ready(function(){
