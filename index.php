@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
   <link rel="stylesheet" href="tabla.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -113,6 +111,15 @@
 }
 .rwd-table-2 th, .rwd-table-2 td:before {
   color: #dd5;
+}
+.rwd-table {
+    background: #34495e !important;
+}
+.rwd-table th, .rwd-table td:before {
+    color: #ec0 !important;
+}
+table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+    background-color: white !important;
 }
   </style>
 
