@@ -26,17 +26,18 @@ require 'db_config.php';
   $post = $_POST;
   $cp = 0;
   if($post['cp'] != ''){$cp = $post['cp'];}
+  $verificado = $post['verified'] === 'true'? 1: 0;
 
-  $sql = "INSERT INTO centro_acopio (Nombre, Calle, Numero, Colonia, CodigoPostal, Del_Mpio, Zona, Estado, Telefono, Contacto, Horarios, TipoCentro, UrlMapa) 
+  $sql = "INSERT INTO centro_acopio (Nombre, Calle, Numero, Colonia, CodigoPostal, Del_Mpio, Zona, Estado, Telefono, Contacto, Horarios, TipoCentro, UrlMapa, Verificado) 
 
-	VALUES ('" .$post['name']. "','" .$post['street']. "', '" .$post['number']. "', '" .$post['neigh']. "', " .$cp. ", '" .$post['county']. "',
-'" .$post['area']. "', '" .$post['state']. "', '" .$post['phone']. "', '" .$post['contact']. "', '" .$post['hours']. "', '" .$post['kind']. "', '" .$post['map']. "');";
+	VALUES ('" .$post['name']. "','" .$post['street']. "', '" .$post['number']. "', '" .$post['neigh']. "', '" .$cp. "', '" .$post['county']. "',
+'" .$post['area']. "', '" .$post['state']. "', '" .$post['phone']. "', '" .$post['contact']. "', '" .$post['hours']. "', '" .$post['kind']. "', '" .$post['map']. "', '" .$verificado."');";
 
   //$data = $sql;
   $result = $mysqli->query($sql);
 
   if($result != False){
-    $result = $mysqli->query("INSERT INTO usuarios (username, pass, centroAcopioId) values ('admin', 'admin', $mysqli->insert_id)");
+    $result = $mysqli->query("INSERT INTO usuarios (username, pass, centro_acopio_id) values ('admin', 'admin', $mysqli->insert_id)");
     if($result != False){ $data = 1; }
     else{ $data=$mysqli->error; }
   }

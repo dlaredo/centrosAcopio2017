@@ -29,9 +29,9 @@ require 'db_config.php';
   $ca_name = $_POST["ca_name"];
   $ca_location = $_POST["ca_location"];
 
-  $sql = "SELECT count(1) FROM usuarios WHERE username = '$user 'and pass = '$pass' and centroAcopioId = $ca_id;";
+  $sql = "SELECT count(1) FROM usuarios WHERE username = '$user 'and pass = '$pass' and centro_acopio_id = $ca_id;";
 
-  //echo $sql;
+  //echo json_encode(utf8ize($sql));
 
   $result = $mysqli->query($sql);
 

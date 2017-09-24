@@ -281,12 +281,12 @@
     var horario = $("#crearCentro").find("input[name='horario']").val();
     var tipo = $("#crearCentro").find("input[name='tipo']").val();
     var mapa = $("#crearCentro").find("input[name='mapa']").val();
-    //var verificado = $("#crearCentro").find("checkbox[name='verificado']").val();
+    var verificado = $("#crearCentro").find("input[name='verificado']").is(":checked");
 
     var url = ''
 
     console.log(nombre + " " + calle + " " + numero + " " + colonia + " " + cp + " " + del_mpio + " " + zona + " " + 
-        estado + " " + telefono + " " + contacto + " " + horario + " " + tipo + " " + mapa);
+        estado + " " + telefono + " " + contacto + " " + horario + " " + tipo + " " + mapa +  " " + verificado);
 
     if(nombre != '' && calle != '' && numero != '' && colonia != '' && del_mpio != '' && estado != ''){
 
@@ -307,7 +307,8 @@ swal({
             //contentType: "application/json",//note the contentType defintion
             type:'POST',
             url: url + form_action,
-            data:{name:nombre, street:calle, number:numero, neigh:colonia, cp:cp, county:del_mpio, area:zona, state:estado, phone:telefono, contact:contacto, hours:horario, kind:tipo, map:mapa}
+            data:{name:nombre, street:calle, number:numero, neigh:colonia, cp:cp, county:del_mpio, area:zona, state:estado, phone:telefono, 
+                contact:contacto, hours:horario, kind:tipo, map:mapa, verified:verificado}
         }).done(function(data){
             $("#crearCentro").find("input[name='nombre']").val('');
             $("#crearCentro").find("input[name='calle']").val('');
@@ -322,6 +323,7 @@ swal({
             $("#crearCentro").find("input[name='horario']").val('');
             $("#crearCentro").find("input[name='tipo']").val('');
             $("#crearCentro").find("input[name='mapa']").val('');
+            $("#crearCentro").find("input[name='verificado']").val();
 
             console.log(data)
 

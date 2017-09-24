@@ -59,11 +59,19 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
 	<div id='authenticated' data-id=0/>
 	<?php
 
-		$nameCentroAcopio = $_GET["name"];
-		$locationCentroAcopio = $_GET["location"];
+		$id = $_POST["id"];
+		$nameCentroAcopio = $_POST["nombre"];
+		$locationCentroAcopio = $_POST["ubicacion"];
 
-		echo "<div id='nameCentro' data-error='$nameCentroAcopio'/>";
-		echo "<div id='locationCentro' data-error='$locationCentroAcopio'/>";
+		echo "
+		   <form action='crud_table.php' method='post' target='_blank' id='invisible_form'>
+		    <input type='hidden' id='fname'>
+		    <input type='hidden' name='id' value='$id'>
+		    <input type='hidden' name='name' value='$nameCentroAcopio'>
+		    <input type='hidden' name='location' value='$locationCentroAcopio'>
+		  </form>";
+
+		
 	?>
 
 	<div class="container">
@@ -72,8 +80,8 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
 		        <div class="pull-left">
 		        	<?php
 
-		        	$nameCentroAcopio = $_GET["name"];
-					$locationCentroAcopio = $_GET["location"];
+		        	$nameCentroAcopio = $_POST["nombre"];
+					$locationCentroAcopio = $_POST["ubicacion"];
 
 		        	echo "<h2> Lista de art&iacute;culos necesarios para el centro de acopio $nameCentroAcopio, ubicado en $locationCentroAcopio. <br/><br/> La lista se muestra en orden descendente por prioridad de art&iacute;culos.</h2><h3><b>Si deseas agregar algo a la lista o modificar alg&uacute;n &iacute;tem los datos de acceso son, <span class='red-color'>usuario: <u>admin</u></span>, <span class='red-color'>contraseña: <u>admin</u></span>. <br/><br/> <p class='green-color text-center'>Por favor haz un uso consciente del servicio</p></b></h3>"
 		        	?>

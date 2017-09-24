@@ -63,6 +63,23 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
 
 	<div id='authenticated' data-id=1>
 
+	<?php
+
+		$id = $_GET["id"];
+		$nameCentroAcopio = $_GET["nombre"];
+		$locationCentroAcopio = $_GET["ubicacion"];
+
+		echo "
+		   <form action='crud_table.php' method='post' target='_blank' id='invisible_form'>
+		    <input type='hidden' id='fname'>
+		    <input type='hidden' name='id' value='$id'>
+		    <input type='hidden' name='name' value='$nameCentroAcopio'>
+		    <input type='hidden' name='location' value='$locationCentroAcopio'>
+		  </form>";
+
+		
+	?>
+
 	<div class="container">
 		<div class="row">
 		    <div class="col-lg-12 margin-tb">					
@@ -141,6 +158,7 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
 							  <option value="Viveres">Viveres</option>
 							  <option value="Articulos de Rescate">Articulos de rescate</option>
 							  <option value="Higiene">Higiene</option>
+							  <option value="Articulos Medicos">Articulos Medicos</option>
 							  <option value="Miscelaneos">Miscelaneos</option>
 							</select>
 							<!--<textarea name="categoria" class="form-control" data-error="Please enter description." required></textarea>-->
@@ -202,6 +220,7 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
 							  <option value="Viveres">Viveres</option>
 							  <option value="Articulos de Rescate">Articulos de rescate</option>
 							  <option value="Higiene">Higiene</option>
+							  <option value="Articulos Medicos">Articulos Medicos</option>
 							  <option value="Miscelaneos">Miscelaneos</option>
 							</select>
 							<!--<textarea name="categoria" class="form-control" data-error="Please enter description." required></textarea>-->

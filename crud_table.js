@@ -4,10 +4,11 @@ var page = 1;
 var current_page = 1;
 var total_page = 0;
 var is_ajax_fire = 0;
-var centro_acopio_id = getParameterByName("val", window.location.href)
+var centro_acopio_id = $("#invisible_form").find("input[name='id']").val();
+//var centro_acopio_id = getParameterByName("val", window.location.href)
 var priority_mapping = ['Urgente', 'Indispensable', 'Muy necesario', 'Necesario']
 var priority_inv_mapping = {'Urgente':0, 'Indispensable':1, 'Muy necesario':2, 'Necesario':3}
-var category_inv_mapping = {'Viveres':0, 'Articulos de rescate':1, 'Higiene':2, 'Miscelaneos':3}
+var category_inv_mapping = {'Viveres':0, 'Articulos de rescate':1, 'Higiene':2, 'Articulos Medicos':3, 'Miscelaneos':4}
 var authenticated = 0
 
 manageData();
@@ -25,6 +26,7 @@ function getParameterByName(name, url) {
 
 /* manage data list */
 function manageData() {
+    console.log(centro_acopio_id)
     $.ajax({
         dataType: 'json',
         contentType: "application/json",//note the contentType defintion
@@ -56,7 +58,7 @@ function manageData() {
     	manageRow(data.data);
         is_ajax_fire = 1;
 
-    }).fail(function(data){ console.log('fallo en manageData')});
+    }).fail(function(data){console.log(data); console.log('fallo en manageData');});
 
 }
 
@@ -101,8 +103,8 @@ $(".crud-login").click(function(e){
     var form_action = $("#login").find("form").attr("action");
     var user = $("#login").find("input[name='user']").val();
     var pass = $("#login").find("input[name='pass']").val();
-    var name = $("#nameCentro").attr("data-error");
-    var location = $("#locationCentro").attr("data-error");
+    var name = $("#invisible_form").find("input[name='name']").val();
+    var location = $("#invisible_form").find("input[name='location']").val();
 
     if(user != '' && pass != ''){
         $.ajax({
@@ -118,14 +120,14 @@ $(".crud-login").click(function(e){
             if(data == 1)
             {
                 console.log('autenticado')
-                window.location.replace("crud_table_admin.php?val=" + centro_acopio_id + "&name=" + name + "&location=" + location);
+                window.location.replace("crud_table_admin.php?id=" + centro_acopio_id + "&name=" + name + "&location=" + location);
             }
             else
             {
                 console.log('no autenticado')
             }
             $(".modal").modal('hide');
-        }).fail(function(){ console.log('fallo en login') });
+        }).fail(function(data){ console.log('fallo en login') });
     }else{
         alert('Por favor llene todos los campos')
     }

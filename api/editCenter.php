@@ -39,6 +39,7 @@ require 'db_config.php';
   $Horarios = $post['hours'];
   $TipoCentro = $post['kind'];
   $UrlMapa = $post['map'];
+  $verificado = $post['verified'] === 'true'? 1: 0;
 
   $sql = "
     UPDATE centro_acopio
@@ -54,22 +55,21 @@ require 'db_config.php';
 		Contacto = '$Contacto',
 		Horarios = '$Horarios',
 		TipoCentro = '$TipoCentro',
-		UrlMapa = '$UrlMapa'
+		UrlMapa = '$UrlMapa',
+    Verificado = '$verificado'
 	WHERE id = $id;
   ";
-  //echo $sql;
+
   //$data = $sql;
   
   
   $result = $mysqli->query($sql);
 
 
-  if($result != False){
-    $result = $mysqli->query("INSERT INTO usuarios (username, pass, centroAcopioId) values ('admin', 'admin', $mysqli->insert_id)");
-    if($result != False){ $data = 1; }
-    else{ $data=$mysqli->error; }
+  $data = 1;
+  if($result == false){
+    $data=$mysqli->error;
   }
-  else{ $data=$mysqli->error; }
 
   //echo $inserted;
 

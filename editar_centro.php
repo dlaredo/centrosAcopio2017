@@ -16,20 +16,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css">
 </head>
 <?php
-$id = $_GET["id"];
-$Nombre = $_GET["Nombre"];
-$Calle = $_GET["Calle"];
-$Numero = $_GET["Numero"];
-$Colonia = $_GET["Colonia"];
-$CodigoPostal = $_GET["CodigoPostal"];
-$Del_Mpio = $_GET["Del_Mpio"];
-$Zona = $_GET["Zona"];
-$Estado = $_GET["Estado"];
-$Telefono = $_GET["Telefono"];
-$Contacto = $_GET["Contacto"];
-$Horarios = $_GET["Horarios"];
-$TipoCentro = $_GET["TipoCentro"];
-$URLMapa = $_GET["URLMapa"];
+$id = $_POST["id"];
+$Nombre = $_POST["nombre"];
+$Calle = $_POST["calle"];
+$Numero = $_POST["numero"];
+$Colonia = $_POST["colonia"];
+$CodigoPostal = $_POST["cp"];
+$Del_Mpio = $_POST["del_mpio"];
+$Zona = $_POST["zona"];
+$Estado = $_POST["estado"];
+$Telefono = $_POST["telefono"];
+$Contacto = $_POST["contacto"];
+$Horarios = $_POST["horario"];
+$TipoCentro = $_POST["tipo"];
+$URLMapa = $_POST["urlMapa"];
+$verificado = $_POST["verificado"];
+
+
 echo "
     <div class=\"main-content\">
 
@@ -226,7 +229,8 @@ echo "
 
                 <label class=\"form-checkbox\">
                     <span>Verificado</span>
-                    <input type=\"checkbox\" name=\"verificado\"><input type=\"hidden\" name=\"id\" value = \"$id\">
+                    <input type=\"checkbox\" name=\"verificado\" value='$verificado'>
+                    <input type=\"hidden\" name=\"id\" value = \"$id\">
                 </label>
 
             </div>
@@ -277,6 +281,9 @@ echo "
             }
 
         });
+
+        isVerified = $("#editarCentro").find("input[name='verificado']").val()
+        if(isVerified == 1){$("#editarCentro").find("input[name='verificado']").prop('checked', true);}
         
     });
 
@@ -314,11 +321,12 @@ echo "
 	//alert('mapa:' +mapa);
     //var verificado = $("#editarCentro").find("checkbox[name='verificado']").val();
 	var id = $("#editarCentro").find("input[name='id']").val();
+    var verificado = $("#editarCentro").find("input[name='verificado']").is(":checked");
 
     var url = ''
 
     console.log(nombre + " " + calle + " " + numero + " " + colonia + " " + cp + " " + del_mpio + " " + zona + " " + 
-        estado + " " + telefono + " " + contacto + " " + horario + " " + tipo + " " + mapa + " " + id);
+        estado + " " + telefono + " " + contacto + " " + horario + " " + tipo + " " + mapa + " " + verificado + " " + id);
 
     if(nombre != '' && calle != '' && numero != '' && colonia != '' && del_mpio != '' && estado != ''){
 		console.log('Entra al if');
@@ -341,7 +349,8 @@ swal({
             //contentType: "application/json",//note the contentType defintion
             type:'POST',
             url: url + form_action,
-            data:{name:nombre, street:calle, number:numero, neigh:colonia, cp:cp, county:del_mpio, area:zona, state:estado, phone:telefono, contact:contacto, hours:horario, kind:tipo, map:mapa, id:id}
+            data:{name:nombre, street:calle, number:numero, neigh:colonia, cp:cp, county:del_mpio, area:zona, state:estado, 
+                phone:telefono, contact:contacto, hours:horario, kind:tipo, map:mapa, verified:verificado, id:id}
         }).done(function(data){
 			
 			console.log('entra a la function(data)');
@@ -360,6 +369,7 @@ swal({
             $("#editarCentro").find("input[name='tipo']").val();
             $("#editarCentro").find("input[name='mapa']").val();
 			$("#editarCentro").find("input[name='id']").val();
+            $("#editarCentro").find("checkbox[name='verificado']").val();
 
             console.log('esto es data:', data)
 
