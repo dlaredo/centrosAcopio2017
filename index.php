@@ -146,6 +146,7 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
     $fieldNamesCentroAcopio = array('Nombre del Centro', 'Calle', 'N&uacute;mero', 'Colonia', 'C&oacute;digo Postal', 'Del/Mpio', 'Zona', 'Estado', 'Tel&eacute;fono', 'Contacto', 'Horarios', 'Tipo Centro', 'Mapa');
 
     require 'api/db_config.php';
+	
 
     function createTable($tableName){
 
@@ -166,6 +167,7 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
                     $p = $fieldNamesCentroAcopio[$col-1];
                        echo "<th>$p</th> \n";
                 }
+				echo "<th>&nbsp</th>";
                 echo "</thead><tbody>\n";
             }
             else{
@@ -185,13 +187,18 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
                        echo "<td>$p</td> \n";
                    }
                 }
+				echo "<td><button type=\"button\" class=\"btn btn-success\" onclick=\"window.open('editar_centro.php?id=$resultRow[0]&Nombre=$resultRow[1]&Calle=$resultRow[2]&Numero=$resultRow[3]&Colonia=$resultRow[4]&CodigoPostal=$resultRow[5]&Del_Mpio=$resultRow[6]&Zona=$resultRow[7]&Estado=$resultRow[8]&Telefono=$resultRow[9]&Contacto=$resultRow[10]&Horarios=$resultRow[11]&TipoCentro=$resultRow[12]&URLMapa=$resultRow[13]', '_self');\">
+    Editar
+  </button></td>";
             }
               echo "</tr>";
             }
         echo "</tbody></table>";
     }
 
-    $dbConnection = connectDB();
+    
+	$dbConnection = connectDB();
+	
     createTable("centro_acopio");
 
 ?>
